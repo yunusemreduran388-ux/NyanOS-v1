@@ -1,7 +1,7 @@
-# MyOS — A Hobby Operating System in C and x86 Assembly
-![MYOS v1 screenshoot](<shoot.png>)
+# Nyanos — A Hobby Operating System in C and x86 Assembly
+![nyanos v1 screenshoot](<shoot.png>)
 
-MyOS is a **real, working** 32-bit x86 kernel: it boots via Multiboot
+nyanos is a **real, working** 32-bit x86 kernel: it boots via Multiboot
 (GRUB or QEMU's built-in loader), sets up its own GDT and IDT, has
 PS/2 keyboard/mouse/timer drivers, switches VGA into a graphics mode
 by programming hardware registers directly (no BIOS calls), and runs
@@ -36,7 +36,7 @@ stubs pretending to be features:
 
 One thing is intentionally **not** real, and I want to be upfront
 about it: the **"Browser" is a local document viewer, not an internet
-browser.** MyOS has no network driver, no TCP/IP stack, no DNS, no
+browser.** nyanos has no network driver, no TCP/IP stack, no DNS, no
 TLS, and no HTML/CSS/JS rendering engine. Building those from scratch
 is a multi-year effort even for professional teams (that's why there
 are only a handful of real browser engines in the world). What the
@@ -97,7 +97,7 @@ sudo apt install build-essential   # gcc, as, ld (with 32-bit multilib)
 make
 ```
 
-This produces `myos.elf`, a Multiboot-compliant kernel image.
+This produces `nyanos.elf`, a Multiboot-compliant kernel image.
 
 ## How to run it (QEMU — easiest way)
 
@@ -108,7 +108,7 @@ sudo apt install qemu-system-x86
 make run
 ```
 
-This runs `qemu-system-i386 -kernel myos.elf`. You'll see boot status
+This runs `qemu-system-i386 -kernel nyanos.elf`. You'll see boot status
 messages in text mode for a moment ("Setting up the GDT... Setting up
 the IDT..."), then the screen switches to 320x200 graphics mode and
 the desktop appears with the About and Terminal windows open.
@@ -122,7 +122,7 @@ releases it).
 ```bash
 sudo apt install grub-pc-bin xorriso
 make iso
-qemu-system-i386 -cdrom myos.iso
+qemu-system-i386 -cdrom nyanos.iso
 ```
 
 You can `dd` this ISO onto a real USB stick and boot it on real
