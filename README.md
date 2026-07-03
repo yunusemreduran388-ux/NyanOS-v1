@@ -1,4 +1,8 @@
 # Nyanos — A Hobby Operating System in C and x86 Assembly
+<p align="center">
+  <img src="nyanosv1test.gif" alt="nyanosv1test" width="500">
+</p>
+
 ![nyanos v1 screenshoot](<shoot.png>)
 
 nyanos is a **real, working** 32-bit x86 kernel: it boots via Multiboot
