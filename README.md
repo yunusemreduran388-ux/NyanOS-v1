@@ -3,7 +3,9 @@
   <img src="nyanosv1test.gif" alt="nyanosv1test" width="500">
 </p>
 
-![nyanos v1 screenshoot](<shoot.png>)
+<p align="center">
+  <img src="shoot.png" alt="scsh" width="500">
+</p>
 
 nyanos is a **real, working** 32-bit x86 kernel: it boots via Multiboot
 (GRUB or QEMU's built-in loader), sets up its own GDT and IDT, has
