@@ -113,6 +113,11 @@ No GRUB/ISO needed — QEMU can boot multiboot kernels directly:
 sudo apt install qemu-system-x86
 make run
 ```
+### Quick Start (No build required!)
+1. Go to the [Releases](link) tab and download `nyanos.iso`.
+2. Run it instantly using QEMU:
+   qemu-system-i386 -cdrom nyanos.iso
+
 
 This runs `qemu-system-i386 -kernel nyanos.elf`. You'll see boot status
 messages in text mode for a moment ("Setting up the GDT... Setting up
