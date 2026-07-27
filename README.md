@@ -6,7 +6,7 @@
 <p align="center">
   <img src="shoot.png" alt="scsh" width="500">
 </p>
-
+WEBSİTE:  https://yunusemreduran388-ux.github.io/NyanOS-v1/
 nyanos is a **real, working** 32-bit x86 kernel: it boots via Multiboot
 (GRUB or QEMU's built-in loader), sets up its own GDT and IDT, has
 PS/2 keyboard/mouse/timer drivers, switches VGA into a graphics mode
