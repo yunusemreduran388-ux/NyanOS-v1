@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/gif" href="https://media1.giphy.com/media/sIIhZliB2McAo/giphy.gif">
     <title>Nyanos - hobby 32-bit x86 operating system</title>
     <style>
         body {
@@ -169,8 +170,24 @@
             padding: 1px 4px;
             font-family: monospace;
         }
-        #sticky-note b {
-            color: #d9534f;
+        @media (max-width: 768px) {
+            #mw-panel {
+                position: relative;
+                width: 100%;
+                padding: 1em 0;
+            }
+            #content {
+                margin-left: 0;
+                margin-top: 0;
+                padding: 1em;
+                border-right: 1px solid #a7d7f9;
+            }
+            .infobox {
+                float: none;
+                width: 100%;
+                margin: 1em 0;
+                box-sizing: border-box;
+            }
         }
     </style>
 </head>
@@ -179,7 +196,7 @@
 <div id="mw-page-base"></div>
 <div id="mw-panel">
     <div style="text-align:center; margin-bottom: 1em;">
-        <a href="https://github.com/yunusemreduran388-ux/NyanOS-v1" target="_blank">
+        <a href="https://github.com/yunusemreduran388-ux/NyanOS-v1" target="_blank" rel="noopener noreferrer">
             <img src="https://media1.giphy.com/media/sIIhZliB2McAo/giphy.gif" alt="Nyan Cat" width="100" style="image-rendering: pixelated;">
         </a>
     </div>
@@ -187,7 +204,7 @@
         <ul>
             <li><a href="#">Main page</a></li>
             <li><a href="#Project_layout">Contents</a></li>
-            <li><a href="https://github.com/yunusemreduran388-ux/NyanOS-v1" target="_blank">GitHub Repository</a></li>
+            <li><a href="https://github.com/yunusemreduran388-ux/NyanOS-v1" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
         </ul>
     </div>
 </div>
@@ -207,7 +224,7 @@
             </tr>
             <tr>
                 <th>Developer</th>
-                <td><a href="https://yunusemreduran388-ux.github.io/" target="_blank">Yunus Emre Duran</a></td>
+                <td><a href="https://yunusemreduran388-ux.github.io/" target="_blank" rel="noopener noreferrer">Yunus Emre Duran</a></td>
             </tr>
             <tr>
                 <th>Programming language</th>
@@ -235,9 +252,9 @@
         </table>
     </div>
 
-    <p><b>Nyanos</b> is a real, working 32-bit x86 kernel. It boots via Multiboot (GRUB or QEMU's built-in loader), sets up its own GDT and IDT, has PS/2 keyboard/mouse/timer drivers, switches VGA into a graphics mode by programming hardware registers directly (no BIOS calls), and runs a small desktop environment with a real window manager, a shell, a text editor, a paint program, and a local document viewer[cite: 1].</p>
+    <p><b>Nyanos</b> is a real, working 32-bit x86 kernel. It boots via Multiboot (GRUB or QEMU's built-in loader), sets up its own GDT and IDT, has PS/2 keyboard/mouse/timer drivers, switches VGA into a graphics mode by programming hardware registers directly (no BIOS calls), and runs a small desktop environment with a real window manager, a shell, a text editor, a paint program, and a local document viewer.</p>
 
-    <p>It was built and verified to compile and link successfully in a standard environment with <code>gcc -m32</code>, <code>as</code>, and <code>ld</code> (no <code>nasm</code>/<code>qemu</code>/<code>grub</code> required for compilation)[cite: 1]. The Multiboot header was checked byte-for-byte: checksum validates to 0, it sits within the first 8KB of the file, and the ELF entry point lands in the correct loaded segment[cite: 1].</p>
+    <p>It was built and verified to compile and link successfully in a standard environment with <code>gcc -m32</code>, <code>as</code>, and <code>ld</code> (no <code>nasm</code>/<code>qemu</code>/<code>grub</code> required for compilation). The Multiboot header was checked byte-for-byte: checksum validates to 0, it sits within the first 8KB of the file, and the ELF entry point lands in the correct loaded segment.</p>
 
     <div class="toc">
         <div style="display: flex; align-items: center;">
@@ -254,15 +271,15 @@
     </div>
 
     <h2 id="Whats_real_here_and_what_isnt">What's real here (and what isn't)</h2>
-    <p>Everything listed below is implemented and does what it says — no stubs pretending to be features[cite: 1]:</p>
+    <p>Everything listed below is implemented and does what it says — no stubs pretending to be features:</p>
     <ul>
-        <li><b>Real interrupt-driven drivers:</b> keyboard, mouse, and a PIT timer all work through actual hardware IRQs (1, 12, 0), not polling loops[cite: 1].</li>
-        <li><b>Real graphics:</b> VGA Mode 13h is set up by programming the sequencer / CRTC / graphics controller / attribute controller / DAC registers directly — the same technique real bare-metal OSes use[cite: 1].</li>
-        <li><b>Real window manager:</b> draggable, closable, focusable, z-ordered windows; a taskbar with per-app buttons; a Start menu[cite: 1].</li>
-        <li><b>Real shell:</b> typed commands are tokenized and dispatched to real command implementations[cite: 1].</li>
-        <li><b>Real file storage:</b> an in-memory ("RAM") file system with actual write/read/list/delete operations, shared by the shell, text editor, and document viewer[cite: 1].</li>
+        <li><b>Real interrupt-driven drivers:</b> keyboard, mouse, and a PIT timer all work through actual hardware IRQs (1, 12, 0), not polling loops.</li>
+        <li><b>Real graphics:</b> VGA Mode 13h is set up by programming the sequencer / CRTC / graphics controller / attribute controller / DAC registers directly — the same technique real bare-metal OSes use.</li>
+        <li><b>Real window manager:</b> draggable, closable, focusable, z-ordered windows; a taskbar with per-app buttons; a Start menu.</li>
+        <li><b>Real shell:</b> typed commands are tokenized and dispatched to real command implementations.</li>
+        <li><b>Real file storage:</b> an in-memory ("RAM") file system with actual write/read/list/delete operations, shared by the shell, text editor, and document viewer.</li>
     </ul>
-    <p>One thing is intentionally <b>not</b> real, and it's important to be upfront about it: the <b>"Browser" is a local document viewer, not an internet browser.</b> nyanos has no network driver, no TCP/IP stack, no DNS, no TLS, and no HTML/CSS/JS engine[cite: 1]. Building those from scratch is a multi-year effort even for professional teams[cite: 1]. What the Browser app <i>does</i> do for real: it reads pages from the in-memory file system and renders a tiny, self-invented markup format (heading and bullet lines), with a working address bar, Home button, and Reload button[cite: 1]. It's the honest, functional equivalent of a browser that actually fits inside a hobby kernel[cite: 1].</p>
+    <p>One thing is intentionally <b>not</b> real, and it's important to be upfront about it: the <b>"Browser" is a local document viewer, not an internet browser.</b> nyanos has no network driver, no TCP/IP stack, no DNS, no TLS, and no HTML/CSS/JS engine. Building those from scratch is a multi-year effort even for professional teams. What the Browser app <i>does</i> do for real: it reads pages from the in-memory file system and renders a tiny, self-invented markup format (heading and bullet lines), with a working address bar, Home button, and Reload button. It's the honest, functional equivalent of a browser that actually fits inside a hobby kernel.</p>
 
     <h2 id="Project_layout">Project layout</h2>
     <table class="wikitable">
@@ -274,82 +291,82 @@
         <tr>
             <td>Boot entry</td>
             <td><code>boot/boot.S</code></td>
-            <td>Multiboot header, stack setup, jump into <code>kernel_main</code>[cite: 1]</td>
+            <td>Multiboot header, stack setup, jump into <code>kernel_main</code></td>
         </tr>
         <tr>
             <td>GDT</td>
             <td><code>kernel/gdt.c</code>, <code>boot/gdt_flush.S</code></td>
-            <td>Flat-model memory segmentation[cite: 1]</td>
+            <td>Flat-model memory segmentation</td>
         </tr>
         <tr>
             <td>IDT / PIC / interrupts</td>
             <td><code>kernel/idt.c</code>, <code>boot/isr.S</code>, <code>boot/idt_flush.S</code></td>
-            <td>32 CPU exceptions + 16 hardware IRQs, 8259 PIC remap[cite: 1]</td>
+            <td>32 CPU exceptions + 16 hardware IRQs, 8259 PIC remap</td>
         </tr>
         <tr>
             <td>Keyboard driver</td>
             <td><code>kernel/drivers/keyboard.c</code></td>
-            <td>PS/2 keyboard, IRQ1, scancode→ASCII[cite: 1]</td>
+            <td>PS/2 keyboard, IRQ1, scancode→ASCII</td>
         </tr>
         <tr>
             <td>Mouse driver</td>
             <td><code>kernel/drivers/mouse.c</code></td>
-            <td>PS/2 mouse, IRQ12, x/y/click tracking[cite: 1]</td>
+            <td>PS/2 mouse, IRQ12, x/y/click tracking</td>
         </tr>
         <tr>
             <td>Timer driver</td>
             <td><code>kernel/drivers/timer.c</code></td>
-            <td>PIT, IRQ0, tick counter / uptime[cite: 1]</td>
+            <td>PIT, IRQ0, tick counter / uptime</td>
         </tr>
         <tr>
             <td>VGA text mode</td>
             <td><code>kernel/drivers/vga_text.c</code></td>
-            <td>80x25 console, <code>kprintf</code>[cite: 1]</td>
+            <td>80x25 console, <code>kprintf</code></td>
         </tr>
         <tr>
             <td>VGA graphics mode</td>
             <td><code>kernel/drivers/vga_gfx.c</code></td>
-            <td>Mode 13h (320x200x256), no BIOS, direct port I/O[cite: 1]</td>
+            <td>Mode 13h (320x200x256), no BIOS, direct port I/O</td>
         </tr>
         <tr>
             <td>Font</td>
             <td><code>kernel/drivers/font.c</code></td>
-            <td>5x7 pixel font (hand authored)[cite: 1]</td>
+            <td>5x7 pixel font (hand authored)</td>
         </tr>
         <tr>
             <td>In-memory file system</td>
             <td><code>kernel/fs.c</code></td>
-            <td>write/read/list/delete on RAM-backed files[cite: 1]</td>
+            <td>write/read/list/delete on RAM-backed files</td>
         </tr>
         <tr>
             <td>Window manager</td>
             <td><code>kernel/gui/gui.c</code></td>
-            <td>Desktop, taskbar, Start menu, draggable/z-ordered windows[cite: 1]</td>
+            <td>Desktop, taskbar, Start menu, draggable/z-ordered windows</td>
         </tr>
         <tr>
             <td>Shell</td>
             <td><code>kernel/gui/terminal_app.c</code></td>
-            <td>Real command parser and dispatcher[cite: 1]</td>
+            <td>Real command parser and dispatcher</td>
         </tr>
         <tr>
             <td>Text editor</td>
             <td><code>kernel/gui/notepad_app.c</code></td>
-            <td>Typing + Save/Load/Clear against the file system[cite: 1]</td>
+            <td>Typing + Save/Load/Clear against the file system</td>
         </tr>
         <tr>
             <td>Paint program</td>
             <td><code>kernel/gui/paint_app.c</code></td>
-            <td>Mouse-driven pixel drawing with a color palette[cite: 1]</td>
+            <td>Mouse-driven pixel drawing with a color palette</td>
         </tr>
         <tr>
             <td>Document viewer ("Browser")</td>
             <td><code>kernel/gui/browser_app.c</code></td>
-            <td>Renders local files with simple markup[cite: 1]</td>
+            <td>Renders local files with simple markup</td>
         </tr>
         <tr>
             <td>Kernel entry</td>
             <td><code>kernel/kernel.c</code></td>
-            <td>Boots every subsystem in order[cite: 1]</td>
+            <td>Boots every subsystem in order</td>
         </tr>
     </table>
 
@@ -374,26 +391,32 @@ reboot / halt    halt the CPU
 </pre>
 
     <h2 id="How_to_build_and_run">How to build and run</h2>
-    <p>On a Linux machine (or WSL), you can build it with[cite: 1]:</p>
+    <p>On a Linux machine (or WSL), you can build it with:</p>
 <pre>
 sudo apt install build-essential   # gcc, as, ld (with 32-bit multilib)
 make
 </pre>
-    <p>This produces <code>nyanos.elf</code>, a Multiboot-compliant kernel image[cite: 1].</p>
+    <p>This produces <code>nyanos.elf</code>, a Multiboot-compliant kernel image.</p>
     
     <h3>How to run it (QEMU — easiest way)</h3>
-    <p>No GRUB/ISO needed — QEMU can boot multiboot kernels directly[cite: 1]:</p>
+    <p>No GRUB/ISO needed — QEMU can boot multiboot kernels directly:</p>
 <pre>
 sudo apt install qemu-system-x86
 make run
 </pre>
     
     <h3>Quick Start (No build required!)</h3>
-    <p>If you don't want to build it yourself, you can go to the GitHub repository and download the release files[cite: 1]. Run it instantly using QEMU[cite: 1]:</p>
+    <p>If you don't want to build it yourself, you can go to the 
+        <a href="https://github.com/yunusemreduran388-ux/NyanOS-v1/releases" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: none; text-shadow: 0px 2px 3px rgba(0, 102, 204, 0.3); font-weight: bold;">
+            GitHub release files <span style="font-family: sans-serif; font-size: 0.9em;">↗</span>
+        </a> 
+        and download them. Run it instantly using QEMU:
+    </p>
 <pre>
+sudo apt install qemu-system-x86   
 qemu-system-i386 -cdrom nyanos.iso
 </pre>
-    <p>This runs <code>qemu-system-i386 -kernel nyanos.elf</code>[cite: 1]. You'll see boot status messages in text mode for a moment, then the screen switches to 320x200 graphics mode and the desktop appears with the About and Terminal windows open[cite: 1]. To use the mouse in the QEMU window, click into the window to grab the mouse (QEMU's status bar tells you how — usually <code>Ctrl+Alt+G</code> releases it)[cite: 1].</p>
+    <p>This runs <code>qemu-system-i386 -kernel nyanos.elf</code>. You'll see boot status messages in text mode for a moment, then the screen switches to 320x200 graphics mode and the desktop appears with the About and Terminal windows open. To use the mouse in the QEMU window, click into the window to grab the mouse (QEMU's status bar tells you how — usually <code>Ctrl+Alt+G</code> releases it).</p>
     
     <h3>How to build a real bootable ISO (optional, via GRUB)</h3>
 <pre>
@@ -401,32 +424,32 @@ sudo apt install grub-pc-bin xorriso
 make iso
 qemu-system-i386 -cdrom nyanos.iso
 </pre>
-    <p>You can <code>dd</code> this ISO onto a real USB stick and boot it on real hardware (BIOS mode) — the kernel doesn't use any BIOS calls after boot (VGA mode switching is done by direct register programming), so it should, in principle, work on real machines too[cite: 1].</p>
+    <p>You can <code>dd</code> this ISO onto a real USB stick and boot it on real hardware (BIOS mode) — the kernel doesn't use any BIOS calls after boot (VGA mode switching is done by direct register programming), so it should, in principle, work on real machines too.</p>
 
     <h2 id="Using_the_desktop">Using the desktop</h2>
     <ul>
-        <li>Click <b>MENU</b> (bottom-left) to open any app, or <b>SHUT DOWN</b>[cite: 1].</li>
-        <li>Each app also has its own <b>taskbar button</b>; click it to open/focus it, click again while it's focused to close it[cite: 1].</li>
-        <li><b>Drag windows</b> by their title bar. Click the <b>red square</b> (top-right of a window) to close it[cite: 1].</li>
-        <li><b>Terminal:</b> click it to focus, then type — it's a real shell (see command list above)[cite: 1].</li>
-        <li><b>Notepad:</b> click to focus, type to edit, click <b>SAVE</b> to persist to <code>notepad.txt</code> in the file system (readable via <code>cat notepad.txt</code> in the shell), <b>LOAD</b> to reload it, <b>CLR</b> to clear the buffer[cite: 1].</li>
-        <li><b>Paint:</b> click a palette swatch to pick a color, then click-drag on the canvas to draw. <b>CLR</b> clears the canvas[cite: 1].</li>
-        <li><b>Browser:</b> click <b>HOME</b> to load the default page, <b>RELD</b> to reload the current page, <b>README</b> to view <code>readme.txt</code>. Use the shell's <code>browser &lt;file&gt;</code> command to load any file you've written[cite: 1].</li>
+        <li>Click <b>MENU</b> (bottom-left) to open any app, or <b>SHUT DOWN</b>.</li>
+        <li>Each app also has its own <b>taskbar button</b>; click it to open/focus it, click again while it's focused to close it.</li>
+        <li><b>Drag windows</b> by their title bar. Click the <b>red square</b> (top-right of a window) to close it.</li>
+        <li><b>Terminal:</b> click it to focus, then type — it's a real shell (see command list above).</li>
+        <li><b>Notepad:</b> click to focus, type to edit, click <b>SAVE</b> to persist to <code>notepad.txt</code> in the file system (readable via <code>cat notepad.txt</code> in the shell), <b>LOAD</b> to reload it, <b>CLR</b> to clear the buffer.</li>
+        <li><b>Paint:</b> click a palette swatch to pick a color, then click-drag on the canvas to draw. <b>CLR</b> clears the canvas.</li>
+        <li><b>Browser:</b> click <b>HOME</b> to load the default page, <b>RELD</b> to reload the current page, <b>README</b> to view <code>readme.txt</code>. Use the shell's <code>browser &lt;file&gt;</code> command to load any file you've written.</li>
     </ul>
 
     <h2 id="Deliberately_out_of_scope">Deliberately out of scope (ideas for what's next)</h2>
-    <p>This is a real kernel at "educational hobby OS" scale, not a production operating system[cite: 1]. Natural next steps[cite: 1]:</p>
+    <p>This is a real kernel at "educational hobby OS" scale, not a production operating system. Natural next steps:</p>
     <ul>
-        <li><b>Memory management:</b> no physical page allocator or paging yet — everything currently runs in one flat address space[cite: 1].</li>
-        <li><b>Multitasking:</b> no scheduler; the GUI runs in a single loop (<code>gui_run</code>). The PIT timer driver is already IRQ-driven, so a preemptive scheduler could hook into it fairly easily[cite: 1].</li>
-        <li><b>Persistent storage:</b> the file system is RAM-only and resets on reboot; a real disk driver (e.g. ATA/IDE) plus an on-disk format (e.g. FAT) would make it persistent[cite: 1].</li>
-        <li><b>Networking:</b> this is the big one for a "real browser" — a NIC driver, a TCP/IP stack, DNS, TLS, and an HTML/CSS/JS engine[cite: 1].</li>
-        <li><b>Richer GUI:</b> window resizing, more fonts/sizes, scrollable text areas, a proper cursor-based text editor (the current Notepad only supports append + backspace at the end)[cite: 1].</li>
+        <li><b>Memory management:</b> no physical page allocator or paging yet — everything currently runs in one flat address space.</li>
+        <li><b>Multitasking:</b> no scheduler; the GUI runs in a single loop (<code>gui_run</code>). The PIT timer driver is already IRQ-driven, so a preemptive scheduler could hook into it fairly easily.</li>
+        <li><b>Persistent storage:</b> the file system is RAM-only and resets on reboot; a real disk driver (e.g. ATA/IDE) plus an on-disk format (e.g. FAT) would make it persistent.</li>
+        <li><b>Networking:</b> this is the big one for a "real browser" — a NIC driver, a TCP/IP stack, DNS, TLS, and an HTML/CSS/JS engine.</li>
+        <li><b>Richer GUI:</b> window resizing, more fonts/sizes, scrollable text areas, a proper cursor-based text editor (the current Notepad only supports append + backspace at the end).</li>
     </ul>
 </div>
 
 <div style="margin: 40px auto; padding: 20px; border: 1px dashed #000000; background-color: #fff9ea; font-family: monospace; font-size: 13px; text-align: left; max-width: 750px; color: #000000;">
-    <strong>[Developer's Note]</strong><br><br>
+    <strong>Developer's Note:</strong><br><br>
     Hey everyone. So, I built this website completely from scratch, and yeah... as you can probably tell from how messy and awful it looks, my high-level web dev skills (HTML/CSS/JS) are absolutely terrible. :D<br><br>
     For my personal portfolio site, I’d normally just cheat and use some polished AI templates. But NyanOS is a whole different story for me. To be honest, I’m not a very social person in real life. But reading and replying to the comments under this project—even the ones that instantly bashed it as 'AI slop'—has been an amazing experience. It honestly made me feel like I’m not alone in this world and that there is a whole community of low-level nerds out there.<br><br>
     Because this project means so much to me, I refused to let an AI write even a single line of this website. I wanted to build it entirely with my own hands, no matter how bad or amateurish it turned out. So yeah, the website might be a total disaster, but the 32-bit Assembly/C kernel running underneath it is 100% real, functional, and fueled by pure passion.
