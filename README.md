@@ -1,6 +1,5 @@
 # Nyanos — A Hobby Operating System in C and x86 Assembly
 
-![](https://img.shields.io/badge/LANGUAGE-C_%7C_ASM-007ACC?style=for-the-badge&logo=c) ![](https://img.shields.io/badge/PROJECT-NyanOS-78C000?style=for-the-badge) ![](https://img.shields.io/badge/LICENSE-Apache License 2.0-DCA800?style=for-the-badge) ![](https://img.shields.io/badge/PLATFORM-LINUX_%7C_WINDOWS_%7C_WSL-E36323?style=for-the-badge)
 
 <p align="center">
   <img src="nyanosv1test.gif" alt="nyanosv1test" width="500">
