@@ -26,7 +26,7 @@ static int  cur_row = 0;
 static char line_buf[LINE_MAX];
 static int  line_len = 0;
 
-#define PROMPT "myos> "
+#define PROMPT "NyanOS> "
 
 static void scroll_up(void) {
     for (int i = 1; i < TERM_ROWS; i++) memcpy(screen[i - 1], screen[i], TERM_COLS + 1);
@@ -100,8 +100,13 @@ static void cmd_help(void) {
     print_str(" help ls cat write rm echo\n");
     print_str(" clear about ver uptime whoami\n");
     print_str(" calc notepad paint browser\n");
-    print_str(" open <app>  reboot\n");
+    print_str(" open <app>  reboot who\n");
 }
+static void cmd_who(void) {
+    print_str("creator:\n");
+    print_str("EmrreDrn\n");
+}
+
 
 static void run_command(char *cmdline) {
     tokenize(cmdline);
@@ -109,7 +114,11 @@ static void run_command(char *cmdline) {
 
     if (strcmp(argv[0], "help") == 0) {
         cmd_help();
+
+  } else if (strcmp(argv[0], "who") == 0) {
+        cmd_who();
     } else if (strcmp(argv[0], "clear") == 0) {
+              
         for (int i = 0; i < TERM_ROWS; i++) memset(screen[i], 0, TERM_COLS + 1);
         cur_row = -1; /* next new_line() brings it to 0 */
     } else if (strcmp(argv[0], "echo") == 0) {
@@ -140,7 +149,7 @@ static void run_command(char *cmdline) {
         else if (fs_delete(argv[1]) == 0) print_str("deleted.\n");
         else print_str("file not found\n");
     } else if (strcmp(argv[0], "about") == 0 || strcmp(argv[0], "ver") == 0) {
-        print_str("MyOS v0.2 - a hobby kernel\n");
+        print_str("NyanOS v0.2 - a hobby kernel\n");
         print_str("Written in C and x86 assembly\n");
     } else if (strcmp(argv[0], "whoami") == 0) {
         print_str("root\n");
@@ -191,8 +200,8 @@ static void run_command(char *cmdline) {
 
 void app_terminal_init(void) {
     memset(screen, 0, sizeof(screen));
-    cur_row = -1;
-    print_str("MyOS Terminal - type 'help'\n");
+    cur_row = 1;
+    print_str("NyanOS Terminal - type 'help'\n");
     print_prompt();
     line_len = 0;
     line_buf[0] = 0;

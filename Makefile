@@ -1,10 +1,10 @@
 # =====================================================================
-# Makefile - MyOS
+# Makefile - NyanOS
 #
 # Usage:
-#   make        -> builds myos.elf
+#   make        -> builds nyanos.elf
 #   make run    -> runs it in QEMU (requires qemu-system-i386)
-#   make iso    -> builds a bootable myos.iso via GRUB (requires grub-mkrescue)
+#   make iso    -> builds a bootable nyanos.iso via GRUB (requires grub-mkrescue)
 #   make clean  -> removes build artifacts
 # =====================================================================
 
@@ -41,7 +41,7 @@ C_OBJS = $(C_SRCS:.c=.o)
 
 OBJS = $(BOOT_OBJS) $(C_OBJS)
 
-KERNEL = myos.elf
+KERNEL = nyanos.elf
 
 all: $(KERNEL)
 
@@ -61,12 +61,12 @@ run: $(KERNEL)
 
 iso: $(KERNEL)
 	mkdir -p isodir/boot/grub
-	cp $(KERNEL) isodir/boot/myos.elf
+	cp $(KERNEL) isodir/boot/nyanos.elf
 	cp grub.cfg isodir/boot/grub/grub.cfg
-	grub-mkrescue -o myos.iso isodir
+	grub-mkrescue -o nyanos.iso isodir
 
 clean:
-	rm -f $(OBJS) $(KERNEL) myos.iso
+	rm -f $(OBJS) $(KERNEL) nyanos.iso
 	rm -rf isodir
 
 .PHONY: all run iso clean

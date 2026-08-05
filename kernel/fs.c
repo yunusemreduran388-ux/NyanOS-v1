@@ -1,7 +1,7 @@
 /* =====================================================================
- * fs.c - MyOS in-memory ("RAM") file system
+ * fs.c - NyanOS in-memory ("RAM") file system
  *
- * MyOS has no disk driver yet, so this is a simple, flat, in-memory
+ * NyanOS has no disk driver yet, so this is a simple, flat, in-memory
  * file table: fixed-size slots, each holding a name and a data
  * buffer. It's enough to give the shell, text editor and document
  * viewer a real, shared, persistent-for-the-session storage layer
@@ -33,7 +33,7 @@ void fs_init(void) {
     memset(files, 0, sizeof(files));
 
     const char *welcome =
-        "Welcome to MyOS!\n"
+        "Welcome to NyanOS!\n"
         "\n"
         "This is a text file stored in the in-memory file system.\n"
         "Try these Terminal commands:\n"
@@ -47,13 +47,13 @@ void fs_init(void) {
     fs_write("readme.txt", welcome, strlen(welcome));
 
     const char *page =
-        "# MyOS Browser\n"
+        "# NyanOS Browser\n"
         "\n"
         "This is a local document, not a real webpage.\n"
         "\n"
         "* No network stack is implemented\n"
         "* No HTML/CSS/JS rendering engine exists\n"
-        "* This viewer only understands simple markup:\n"
+        "* THİS PROJECT İS NOT AI SLOP\n"
         "  lines starting with '#' are headings,\n"
         "  lines starting with '*' are bullets\n"
         "\n"

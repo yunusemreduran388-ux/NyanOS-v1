@@ -23,7 +23,7 @@ void kernel_main(multiboot_info_t *mb_info, uint32_t magic) {
 
     terminal_init();
     terminal_setcolor(10, 0);
-    kprintf("MyOS kernel starting...\n");
+    kprintf("NyanOS kernel starting...\n");
     terminal_setcolor(7, 0);
 
     if (magic != MULTIBOOT_BOOTLOADER_MAGIC) {
@@ -57,7 +57,7 @@ void kernel_main(multiboot_info_t *mb_info, uint32_t magic) {
     kprintf("      -> done\n");
 
     kprintf("[7/7] Switching to graphics mode (320x200x256)...\n");
-    kprintf("\nStarting the MyOS desktop, please wait...\n");
+    kprintf("\nStarting the NyanOS desktop, please wait...\n");
 
     for (volatile uint32_t i = 0; i < 30000000; i++) { }
 

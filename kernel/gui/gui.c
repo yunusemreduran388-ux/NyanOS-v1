@@ -122,9 +122,9 @@ void gui_init(void) {
 
 static void draw_about(int x, int y, int w, int h) {
     (void)w; (void)h;
-    gfx_draw_string(x + 6, y + 16, "MYOS V0.2", C_WHITE);
+    gfx_draw_string(x + 6, y + 16, "NYANOS V0.2", C_WHITE);
     gfx_draw_string(x + 6, y + 28, "C + X86 ASM", C_WHITE);
-    gfx_draw_string(x + 6, y + 40, "REAL KERNEL", C_YELLOW);
+    gfx_draw_string(x + 6, y + 40, "KERNEL", C_YELLOW);
     gfx_draw_string(x + 6, y + 52, "GUI + SHELL", C_YELLOW);
 }
 
